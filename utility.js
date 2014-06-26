@@ -14,6 +14,19 @@ function clearQID(qid) {
   } 
 }
 
+function pipeLoop(qid,iter) { 
+// edited pipe func for loop piping
+  var pipedArr = new Array(); 
+  var d = a(qid,iter).members(); 
+ 
+  for ( var i=0; i<d.length; i++ ) { 
+    if ( f(qid,iter)[d[i]].toBoolean() ) { 
+      pipedArr[i] = "'"+d[i]+"|"+f(qid,iter)[d[i]]+"'"; 
+    } 
+  } 
+  return "["+pipedArr+"]"; 
+}
+
 function setPipe(qid,pre) {
 // sets input id to pipe style (readOnly & color)
 // note:  untested function
