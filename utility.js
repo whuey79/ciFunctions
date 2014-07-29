@@ -133,6 +133,55 @@ function checkTargetListLessThanSourceList(src) {
   }
 }
 
+/*
+* validation for date node vs another date node
+* @param {String} sourceQid - source question id
+* @param {String} targetQid - target question id
+* @param {String} type - type of validation to enforce
+* refactored for general case - Untested
+*/
+function checkDateAgainstOtherDate(sourceQid,targetQid,type) {
+    // date constructor ( year, month0_11, day, hr, min, s )
+    var dt1 = new Date( f(sourceQid).year(), f(sourceQid).month() - 1, f(sourceQid).day(), 0,0,0);
+    var dt2 = new Date( f(targetQid).year(), f(targetQid).month() - 1, f(targetQid).day(), 0,0,0);
+    
+    switch ( type ) {
+    	case "=":
+		  case "==":
+        if ( dt != dt2 ) {
+          RaiseError();
+          AppendQuestionErrorMessage(LangIDs.en, "The date entered must equal " + dt2.toDateString() + ".");
+        }
+			}
+      break;
+      case "<":
+        if ( dt >= dt2 ) {
+          RaiseError();
+          AppendQuestionErrorMessage(LangIDs.en, "The date entered must be before " + dt2.toDateString() + ".");
+        }
+      break;
+      case ">":
+        if ( dt <= dt2 ) {
+          RaiseError();
+          AppendQuestionErrorMessage(LangIDs.en, "The date entered must be after " + dt2.toDateString() + ".");
+        }
+      break;
+      case ">=":
+        if ( dt < dt2 ) {
+          RaiseError();
+          AppendQuestionErrorMessage(LangIDs.en, "The date entered must be on or after " + dt2.toDateString() + ".");
+        }
+      break;
+      case "<=":
+        if ( dt > dt2 ) {
+          RaiseError();
+          AppendQuestionErrorMessage(LangIDs.en, "The date entered must be on or before " + dt2.toDateString() + ".");
+        }
+      break;
+    }
+}
+
+
 // /*
 // * -----------------------------------------------------------------------------------
 // * pickMultiSegmentQuota rev3
