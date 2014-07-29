@@ -43,7 +43,7 @@ function pipeLoop(qid,iter) {
 * @param {String} pre - question precode
 * Untested
 */
-function setPipe(qid,pre) {
+function setPipeStyle(qid,pre) {
 
   var id = '#' + qid;
 
@@ -53,8 +53,22 @@ function setPipe(qid,pre) {
   var x = $(id);
   if (x) {
     x.attr('readOnly',true);
-    x.css("backgroundColor", "#e1e1e1");
+    x.css('backgroundColor', '#e1e1e1');
   }
+}
+
+/*
+* builds an unordered list from given array
+* @param {Array} arr 
+* Tested
+*/
+function buildUnorderedList(arr) {
+  var text = "<ul>";
+
+  for (var i = 0; i< arr.length; i++) {
+    text += "<li>" + arr[i] + "</li>"
+  }
+  return text + "</ul>";
 }
 
 /*
