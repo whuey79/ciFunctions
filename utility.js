@@ -63,6 +63,7 @@ function setPipeStyle(qid,pre) {
 * Tested
 */
 function buildUnorderedList(arr) {
+
   var text = "<ul>";
 
   for (var i = 0; i< arr.length; i++) {
@@ -98,7 +99,6 @@ function checkTargetNumLessThanSourceNum(src) {
     AppendQuestionErrorMessage(LangIDs.en, "Your answer must be less than or equal to " + max + ".");
   }
 }
-
 
 /*
 * validation for numeric list <= single numeric 
