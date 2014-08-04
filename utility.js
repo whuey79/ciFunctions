@@ -129,7 +129,7 @@ function checkTargetListLessThanSourceNum(src,pre) {
 /*
 * validation for numeric list <= numeric list (assume same list)
 * @param {String} src - source question id
-* Untested
+* tested
 */
 function checkTargetListLessThanSourceList(src) {
 
@@ -138,7 +138,7 @@ function checkTargetListLessThanSourceList(src) {
   var max;
     
   for (var i = 0; i < dv.length; i++) {
-    max = f(src)[dv[i]]].toNumber();
+    max = f(src)[ dv[i] ].toNumber();
     
     if( f(tar)[ dv[i] ].toNumber() > max ) {
       RaiseError();
