@@ -1,3 +1,3 @@
 ciFunctions
 ===========
-my functions for ci
+My functions for Confirmit
