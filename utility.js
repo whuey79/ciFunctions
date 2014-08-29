@@ -44,10 +44,8 @@ function pipeLoop(qid,iter) {
 * Untested
 */
 function setPipeStyle(qid,pre) {
-
   var id = '#' + qid;
-
-  if ( pre ) {
+  if (typeof pre != 'undefined' ) {
     id += '_' + pre;
   }
   var x = $(id);
