@@ -1,10 +1,45 @@
+/*
+* validation for single numeric vs single numeric
+* @param {String} src - source question id
+* @param {String} type - operator type ie '<', '==', '>='
+* untested (refactored)
+*/
 function checkTargetNumAgainstSourceNum(src,type) {
 // validation for single numeric vs single numeric
   var tar = CurrentForm();
   var max = f(src).toNumber();
-  validateAB(value1,value2,type);
+  checkAB(value1,value2,type);
 }
 
+/*
+* validation for numeric list vs numeric list
+* @param {String} src - source question id
+* @param {String} type - operator type ie '<', '==', '>='
+* untested (refactored)
+*/
+function checkTargetListAgainstSourceList(src,type) {
+// validation for numeric list vs numeric list
+  var tar = CurrentForm();
+  var dv = f(tar).domainValues();
+  var value2;
+  var value1;
+  var rowLabel;
+    
+  for (var i = 0; i < dv.length; i++) {
+    value2 = f(src)[ dv[i] ].toNumber();
+    value1 = f(tar)[ dv[i] ].toNumber();
+    rowLabel = f(tar)[ dv[i] ].label();
+    checkAB(value1,value2,type,rowLabel);
+  }
+}
+
+/*
+* validation for numeric list vs single numeric or single pre in numeric list (pre is optional)
+* @param {String} src - source question id
+* @param {String} type - operator type ie '<', '==', '>='
+* @param {Int} pre (optional) - pre code source question if comparing against single numeric list option
+* untested (refactored)
+*/
 function checkTargetListAgainstSourceNum(src,type,pre) {
 // validation for numeric list vs single numeric or single pre in numeric list (pre is optional)
   var tar = CurrentForm();
@@ -20,27 +55,19 @@ function checkTargetListAgainstSourceNum(src,type,pre) {
   for (var i = 0; i < dv.length; i++) {
     value1 = f(tar)[ dv[i] ].toNumber();
     rowLabel = f(tar)[ dv[i] ].label();
-    validateAB(value1,value2,type,rowLabel);
+    checkAB(value1,value2,type,rowLabel);
   }
 }
 
-function checkTargetListAgainstSourceList(src,type) {
-// validation for numeric list vs numeric list
-  var tar = CurrentForm();
-  var dv = f(tar).domainValues();
-  var value2;
-  var value1;
-  var rowLabel;
-    
-  for (var i = 0; i < dv.length; i++) {
-    value2 = f(src)[ dv[i] ].toNumber();
-    value1 = f(tar)[ dv[i] ].toNumber();
-    rowLabel = f(tar)[ dv[i] ].label();
-    validateAB(value1,value2,type,rowLabel);
-  }
-}
-
-function validateAB(value1,value2,type,rowLabel) {
+/*
+* generic validation comparing value1 and value2 (needed for numeric check functions above)
+* @param {Int} value1 = first operand
+* @param {Int} value2 - second operand
+* @param {String} type - operator type ie '<', '==', '>='
+* @param {String} rowLabel (optional) - additional error information to be appended
+* untested (refactored)
+*/
+function checkAB(value1,value2,type,rowLabel) {
     var endOfMessage = "";
 
     if (typeof rowLabel !== 'undefined') {
@@ -51,6 +78,7 @@ function validateAB(value1,value2,type,rowLabel) {
     switch ( type ) {
       case "=":
       case "==":
+      case "===":
         if ( value1 !== value2 ) {
           RaiseError();
           AppendQuestionErrorMessage(LangIDs.en, "The value entered must equal " + value2 + endOfMessage);
