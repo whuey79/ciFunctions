@@ -129,7 +129,7 @@ function checkTargetListLessThanSourceNum(src,pre) {
 * @param {String} src - source question id
 * tested
 */
-function checkTargetListLessThanSourceList(src) {
+function checkTargetListAgainstOtherSourceList(src,operator) {
 
   var tar = CurrentForm();
   var dv = f(tar).domainValues();
@@ -160,7 +160,7 @@ function checkDateAgainstOtherDate(sourceQid,targetQid,type) {
     switch ( type ) {
     	case "=":
 		  case "==":
-        if ( dt != dt2 ) {
+        if ( dt.getTime() != dt2.getTime() ) {
           RaiseError();
           AppendQuestionErrorMessage(LangIDs.en, "The date entered must equal " + dt2.toDateString() + ".");
         }
