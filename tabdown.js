@@ -10,7 +10,7 @@ function tabDown(gid) {
   var startTabIndex = $container.find('input').eq(0).attr('tabIndex');
   var $colInput;
     
-  // update regular inputs
+  // update regular inputs by column
   for (var i =1; i<= numColumns; i++) {
     $colInput = $container.find("[headers*='header" + i + "']").find('input');
     $colInput.each(function(index,value) {
