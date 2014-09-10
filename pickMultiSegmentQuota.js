@@ -1,6 +1,11 @@
 // /*
 // * -----------------------------------------------------------------------------------
-// * pickMultiSegmentQuota rev3
+// * pickMultiSegmentQuota rev4
+// *    Changes:  
+// *      1.  Added QF check for alwaysAdds
+// *      2.  Added QF check function
+// *      3.  Changed arguments to object
+// *      4.  Updated dv init code to fix bug where type of array value didn't match string type
 // *
 // *    Randomly sets totalNumSeen # of answers in a MULTI, with optional priority precodes
 // *    Useful when you need to show X out of Y brands or sections
@@ -46,7 +51,15 @@ function pickMultiSegmentQuota( options ) {
       alwaysAdd = options.alwaysAdd || defaults.alwaysAdd;
 
   // sets potential array to a subset if specified or to all options in the MULTI  
-  var dv = options.qidSubset || f(qid).domainValues();
+  var dv = f(qid).domainValues();
+  
+  if (options.qidSubset) {
+    dv = [];
+    
+    for (var i =0; i< options.qidSubset.length; i++) {
+      dv.push( options.qidSubset[i].toString() );
+    }   
+  }
 
   // initialize all options in MULTI to 0
   initMulti(qid);
