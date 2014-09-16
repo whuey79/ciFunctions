@@ -6,8 +6,8 @@
 */
 function checkTargetNumAgainstSourceNum(src,type) {
 // validation for single numeric vs single numeric
-  var tar = CurrentForm();
-  var max = f(src).toNumber();
+  var value1 = f(CurrentForm()).toNumber();
+  var value2 = f(src).toNumber();
   checkAB(value1,value2,type);
 }
 
