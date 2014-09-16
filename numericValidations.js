@@ -67,7 +67,9 @@ function checkTargetListAgainstSourceNum(src,type,pre) {
 * @param {String} rowLabel (optional) - additional error information to be appended
 * untested (refactored)
 */
+
 function checkAB(value1,value2,type,rowLabel) {
+// required for check functions above
     var endOfMessage = "";
 
     if (typeof rowLabel !== 'undefined') {
@@ -105,7 +107,7 @@ function checkAB(value1,value2,type,rowLabel) {
       case "<=":
         if ( value1 > value2 ) {
           RaiseError();
-          AppendQuestionErrorMessage(LangIDs.en, "The value entered must be greater than " + value2 + endOfMessage);
+          AppendQuestionErrorMessage(LangIDs.en, "The value entered must be less than or equal to " + value2 + endOfMessage);
         }
       break;
     }
