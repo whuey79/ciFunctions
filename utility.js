@@ -1,3 +1,13 @@
+/*
+* Clear the answers of any question
+* @param {int} val - expects an integer 1+ and returns 'a','b','c', etc.
+* Tested
+*/
+
+function getColChar(val) {
+  // a=97, b=98...
+  return String.fromCharCode(96 + parseInt(val,10));
+}
 
 /*
 * Clear the answers of any question

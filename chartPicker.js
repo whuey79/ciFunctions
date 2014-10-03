@@ -5,18 +5,18 @@
 
 function setCXTracker() {
  
-    var s = [];  // arr of potential picked
-    var p = [];  // arr of picked
+    var s = [],  // arr of potential picked
+        p = [],  // arr of picked
     
-    var a = [];  // chart A
-    var b = [];  // chart B
-    var c = [];  // chart C
+        a = [],  // chart A
+        b = [],  // chart B
+        c = [],  // chart C
 
-    var d = [];   // chart A,B,C
-    var q = [];   // QF Charts
+        d = [],   // chart A,B,C
+        q = [],   // QF Charts
 
-    var rand = 0;
-    var ptotal = 0;  // patient total
+        rand = 0,
+        ptotal = 0;  // patient total
 
     // get values - possible refactor to params
     var aval = f('s13')[1].toNumber() + f('s13')[2].toNumber();
@@ -25,8 +25,9 @@ function setCXTracker() {
 
     
     if ( aval > 0 ) {
+    // if chartA has at least 1 patient and quota is open, push first option
       if ( qf('chartA') == false ) {
-        s.push(1);  // if chartA has at least 1 patient, push first option
+        s.push(1);  
         ptotal += aval;
 
         a.push(1);  // if chartA has 1+ patients, push 2nd option (2 of same chart max)

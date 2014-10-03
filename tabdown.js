@@ -5,10 +5,10 @@
 * untested
 */
 function tabDown(gid) {
-  var $container = $('#fieldset_'+gid); // cache container selector
-  var numColumns = $container.find('.qigscale').length;  // find number of Columns
-  var startTabIndex = $container.find('input').eq(0).attr('tabIndex');
-  var $colInput;
+  var $container = $('#fieldset_'+gid), // cache container selector
+      numColumns = $container.find('.qigscale').length,  // find number of Columns
+      startTabIndex = $container.find('input').eq(0).attr('tabIndex'),
+      $colInput;
     
   // update regular inputs by column
   for (var i =1; i<= numColumns; i++) {
