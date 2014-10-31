@@ -6,8 +6,8 @@
 */
 function tabDown(gid) {
   var $container = $('#fieldset_'+gid), // cache container selector
-      numColumns = $container.find('.qigscale').length,  // find number of Columns
-      startTabIndex = $container.find('input').eq(0).attr('tabIndex'),
+      numColumns = $container.find('tbody tr:first .qiginput').length, // find number of Columns
+      startTabIndex = $container.find('td.qiginput input').eq(0).attr('tabIndex'),
       $colInput;
     
   // update regular inputs by column

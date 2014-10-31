@@ -4,12 +4,20 @@
 * @param {String} type - operator type ie '<', '==', '>='
 * untested (refactored)
 */
-function checkTargetNumAgainstSourceNum(src,type) {
+function checkTargetNumAgainstSourceNum(src,type,pre) {
 // validation for single numeric vs single numeric
   var value1 = f(CurrentForm()).toNumber();
-  var value2 = f(src).toNumber();
+  var value2;
+
+  if (typeof pre !== 'undefined') {
+    value2 = f(src)[pre].toNumber();
+  } else {
+    value2 = f(src).toNumber();
+  }
+
   checkAB(value1,value2,type);
 }
+
 
 /*
 * validation for numeric list vs numeric list

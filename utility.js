@@ -1,7 +1,33 @@
 /*
-* Clear the answers of any question
+* Creates hidden TR to simulate margin-top for additional spacing
+* @param {str} excId - id of exclusive 'None of the above'
+* untested
+*/
+
+function padExclusiveMulti(excId) {
+  $(excId).closest('tr')
+       .before($('<tr>'))
+       .prev().append($('<td>&nbsp;</td>'))
+       .css( { 'visibility':'hidden' });
+}
+
+/*
+* adds scale numbering underneath each table heading for likerts
+* @param {str} qid - Question id
+* untested
+*/
+function enumScale(qid) {
+  var $fs = $('#fieldset_' + qid);
+  $fs.find('th.qigscale').each( function(index){ 
+    index++;
+    $(this).append("<br>" + index);
+  });
+}
+
+/*
+* Convert 1,2,3... to 'a','b','c'.. for 3dGrid Column identifier
 * @param {int} val - expects an integer 1+ and returns 'a','b','c', etc.
-* Tested
+* untested
 */
 
 function getColChar(val) {
