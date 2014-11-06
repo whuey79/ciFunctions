@@ -45,7 +45,7 @@ function clearQID(qid) {
   if (f(qid).COMPOUND) {  // question with multiple options
     var fcodes = f(qid).domainValues(); //all codes in f(qid) 
 
-    for (var i : int = 0; i < fcodes.length; i++) { 
+    for (var i = 0; i < fcodes.length; i++) { 
       f(qid)[fcodes[i]].set(null); // clear item 
     } 
   } 
@@ -62,7 +62,7 @@ function clearQID(qid) {
 */
 function pipeLoop(qid,iter) { 
 
-  var pipedArr = new Array(); 
+  var pipedArr = []; 
   var d = a(qid,iter).members(); 
  
   for ( var i=0; i<d.length; i++ ) { 

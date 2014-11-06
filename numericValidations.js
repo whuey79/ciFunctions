@@ -14,7 +14,6 @@ function checkTargetNumAgainstSourceNum(src,type,pre) {
   } else {
     value2 = f(src).toNumber();
   }
-
   checkAB(value1,value2,type);
 }
 
@@ -29,9 +28,7 @@ function checkTargetListAgainstSourceList(src,type) {
 // validation for numeric list vs numeric list
   var tar = CurrentForm();
   var dv = f(tar).domainValues();
-  var value2;
-  var value1;
-  var rowLabel;
+  var value1, value2, rowLabel;
     
   for (var i = 0; i < dv.length; i++) {
     value2 = f(src)[ dv[i] ].toNumber();
@@ -52,7 +49,7 @@ function checkTargetListAgainstSourceNum(src,type,pre) {
 // validation for numeric list vs single numeric or single pre in numeric list (pre is optional)
   var tar = CurrentForm();
   var dv = f(tar).domainValues();
-  var value1,value2, rowLabel;
+  var value1, value2, rowLabel;
   
   if (typeof pre !== 'undefined') {
     value2 = f(src)[pre].toNumber();
