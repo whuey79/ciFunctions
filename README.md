@@ -1,3 +1,3 @@
-ciFunctions
+ConfirmIt Functions
 ===========
-My functions for Confirmit
+Functions for Confirmit
